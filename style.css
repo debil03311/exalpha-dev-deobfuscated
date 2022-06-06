@@ -1,5 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --rounding: 5px;
+
+  --body-background: #354259;
+  --body-color: #EEE;
+
+  --accent: #2F8F9D;
+  --accent-lighter: #3BACB6;
+  --accent-light: #82DBD8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--body-background);
+  color: var(--body-color);
+  font: 400 13pt "Radio Canada", sans-serif;
+
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: clamp(200px, 100%, 600px);
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 1em;
+}
+
+h1 {
+  font: 800 30pt "Raleway", sans-serif;
+}
+
+#keygen {
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2px;
+}
+
+#name-wrapper {
+  margin-bottom: 8px;
+  display: flex;
+}
+
+input,
+button
+{
+  color: inherit;
+  font: inherit;
+  border: solid 1px transparent;
+  padding: 8px 16px;
+}
+
+#name {
+  flex-grow: 1;
+  background-color: #0004;
+  border-color: var(--accent);
+  border-radius: var(--rounding) 0 0 var(--rounding);
+}
+
+#name.dev {
+  color: orange;
+}
+
+#btn-keygen {
+  background-color: var(--accent);
+  color: var(--body-color);
+  font-weight: 600;
+  border-color: var(--accent);
+  border-left: none;
+  border-radius: 0 var(--rounding) var(--rounding) 0;
+  cursor: pointer;
+  transition: 100ms;
+}
+
+#btn-keygen:hover {
+  background-color: #FFF;
+  color: #000;
+}
+
+#key-message {
+  color: goldenrod;
+  font-weight: 600;
+}
+
+#key-message.success {
+  color: var(--accent-light);
+}
 
 #key {
-    font-size: 20pt;
-    font-style: oblique;
+  color: #FFF;
+}
+
+article {
+  background-color: #0002;
+  border: solid 1px #000;
+  border-radius: var(--rounding);
+  padding: 2px 1em;
+}
+
+.author {
+  color: var(--accent-lighter);
+  text-align: right;
+  font-style: italic;
+  font-weight: 600;
 }

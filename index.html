@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Registration</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
 
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-        <script src="avkeys.js"></script>
-    </head>
+  <body>
+    <main>
+      <h1>Registration</h1>
 
-    <body>
-        <h1>Registration</h1>
-        <input type="text" id="name"></input>
-        <button onclick="genKeyAfterTime()">Generate Key</button>
+      <section id="keygen">
+        <div id="name-wrapper">
+          <input id="name"
+            type="text"
+            maxlength="15"
+            placeholder="Username"
+            onkeydown="generateKey(event)">
 
-        <div id="key"></div>
-
-        <br><br><br>
-        <div style="font-style: italic;">
-            <br>We are currently working on making this page a mirror of one of the old sites. While we found all the required resources, some work still needs to be done, so for now, we only ported over the registration page.
-            <br>Expect to see a lot of new content.
-            <br> - [6]
+          <button id="btn-keygen" onclick="generateKey()">
+            Generate Key
+          </button>
         </div>
-    </body>
+
+        <span id="key-message"></span>
+        <code id="key"></code>
+      </section>
+
+      <section id="messages">
+        <article>
+          <p>
+            We are currently working on making this page a mirror of one of the old sites. While we found all the required resources, some work still needs to be done, so for now, we only ported over the registration page.
+          </p>
+          <p>
+            Expect to see a lot of new content.
+          </p>
+          <p>
+            <span class="author">// [6]</span>
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <script src="avkeys.modified.js"></script>
+  </body>
 </html>
