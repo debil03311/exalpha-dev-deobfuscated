@@ -11,27 +11,27 @@ function createKey(name) {
     return '#';
   }
 
-  let numberString = '';
+  let numberString0 = '';
   let counter = 0;
 
   for (let i = 0; i < name.length; i++) {
-    numberString += (70 - (26 - (name.charCodeAt(i) - 'A'.charCodeAt(0)))).toString();
+    numberString0 += (70 - (26 - (name.charCodeAt(i) - 'A'.charCodeAt(0)))).toString();
     counter++;
   }
 
-  var _numberString = numberString;
+  var numberString1 = numberString0;
 
   while (++counter != 15) {
-    _numberString += (10 + Math.floor(Math.random() * 89)).toString();
+    numberString1 += (10 + Math.floor(Math.random() * 89)).toString();
   }
 
   let number0 = 0;
-  for (let i = 0; i < _numberString.length; i++)
-    number0 += _numberString.charCodeAt(i) - '0'.charCodeAt(0);
+  for (let i = 0; i < numberString1.length; i++)
+    number0 += numberString1.charCodeAt(i) - '0'.charCodeAt(0);
 
   var number1 = 0;
-  for (let i = 0; i < numberString.length; i++)
-    number1 += numberString.charCodeAt(i) - '0'.charCodeAt(0);
+  for (let i = 0; i < numberString0.length; i++)
+    number1 += numberString0.charCodeAt(i) - '0'.charCodeAt(0);
 
   number1 %= 100;
 
@@ -41,7 +41,7 @@ function createKey(name) {
   let key = '';
   key += ('000' + randomNumber0).slice(-3);
   key = key.split('').reverse().join('');
-  key += _numberString;
+  key += numberString1;
   key += ('000' + randomNumber1).slice(-3);
   key += ('00' + number1).slice(-2);
   key = key.slice(0, 6) + '-' + key.slice(6);
