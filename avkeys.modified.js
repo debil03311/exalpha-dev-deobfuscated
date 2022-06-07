@@ -27,8 +27,10 @@ function createKey(username) {
 
   var numberString1 = numberString0;
 
-  while (++counter != 15)
+  while (counter != 15) {
     numberString1 += (10 + Math.floor(Math.random() * 89)).toString();
+    counter++;
+  }
 
   let number0 = 0;
   for (let i = 0; i < numberString1.length; i++)
