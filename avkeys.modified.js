@@ -3,6 +3,7 @@ const e_key = document.getElementById("key");
 const e_keyMessage = document.getElementById("key-message");
 
 const sleep =(ms=0)=> new Promise((resolve)=> setTimeout(resolve, ms));
+const EndBytes = [0x27, 0x56, 0x1a, 0x48, 0xd, 0x5b, 0x17];
 
 function createKey(username) {
   username = username.toUpperCase();
@@ -25,9 +26,11 @@ function createKey(username) {
     counter++;
   }
 
+  numberString0 += EndBytes[Math.floor(Math.random() * EndBytes.length)].toString();
+  counter++;
   var numberString1 = numberString0;
 
-  while (counter != 15) {
+  while (counter != 16) {
     numberString1 += (10 + Math.floor(Math.random() * 89)).toString();
     counter++;
   }
@@ -36,7 +39,7 @@ function createKey(username) {
   for (let i = 0; i < numberString1.length; i++)
     number0 += numberString1.charCodeAt(i) - '0'.charCodeAt(0);
 
-  var number1 = 0;
+  let number1 = 0;
   for (let i = 0; i < numberString0.length; i++)
     number1 += numberString0.charCodeAt(i) - '0'.charCodeAt(0);
 
