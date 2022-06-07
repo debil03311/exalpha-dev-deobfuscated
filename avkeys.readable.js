@@ -1,12 +1,14 @@
-function createKey(name) {
-  name = name.toUpperCase();
+const EndBytes = [0x27, 0x56, 0x1a, 0x48, 0xd, 0x5b, 0x17];
 
-  if (name.length > 15) {
+function createKey(username) {
+  username = username.toUpperCase();
+
+  if (username.length > 15) {
     console.log('Name too long');
     return '#';
   }
 
-  if (name.match(/[^A-Z0-9_]/)) {
+  if (username.match(/[^A-Z0-9_]/)) {
     console.log('Invalid character, use only A to Z uppercase');
     return '#';
   }
@@ -14,22 +16,23 @@ function createKey(name) {
   let numberString0 = '';
   let counter = 0;
 
-  for (let i = 0; i < name.length; i++) {
-    numberString0 += (70 - (26 - (name.charCodeAt(i) - 'A'.charCodeAt(0)))).toString();
+  for (let i = 0; i < username.length; i++) {
+    numberString0 += (70 - (26 - (username.charCodeAt(i) - 'A'.charCodeAt(0)))).toString();
     counter++;
   }
 
-  var numberString1 = numberString0;
+  numberString0 += EndBytes[Math.floor(Math.random() * EndBytes.length)].toString();
+  counter++;
+  let numberString1 = numberString0;
 
-  while (++counter != 15) {
+  while (++counter != 15)
     numberString1 += (10 + Math.floor(Math.random() * 89)).toString();
-  }
 
   let number0 = 0;
   for (let i = 0; i < numberString1.length; i++)
     number0 += numberString1.charCodeAt(i) - '0'.charCodeAt(0);
 
-  var number1 = 0;
+  let number1 = 0;
   for (let i = 0; i < numberString0.length; i++)
     number1 += numberString0.charCodeAt(i) - '0'.charCodeAt(0);
 
@@ -59,21 +62,21 @@ function genKeyAfterTime() {
 }
 
 function generateKey() {
-  const name = document.getElementById('name').value;
+  const username = document.getElementById('name').value;
 
-  if (!name) {
+  if (!username) {
     document.getElementById('key').innerHTML = 'Errors occurred during key generation:<br> * name cannot be empty'
     return;
   }
 
-  const key = createKey(name);
+  const key = createKey(username);
 
-  if (name.startsWith('dev')) {
+  if (username.startsWith('dev')) {
     document.getElementById('key').innerHTML = 'Errors occurred during key generation:<br> * this username format is reserved for internal use';
     return;
   }
 
-  if (name.length > 15) {
+  if (username.length > 15) {
     document.getElementById('key').innerHTML = 'Errors occurred during key generation:<br> * username too long';
     return;
   }
